@@ -1,16 +1,19 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
+import Home from "./component/public/Home";
 function App() {
   return (
-    <Router>
-      <div className="p-4">
-        {" "}
-        {/* Container daisyUI */}
-        <Routes>
-          <Route path="/" element={"Ciao"} />
-        </Routes>
-      </div>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
