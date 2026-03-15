@@ -6,13 +6,6 @@
     lux;
 }
 
-:root {
-  max-width: 1152px;
-  margin: 0 auto;
-  --font-sans: "Geist", system-ui, sans-serif;
-  --font-mono: "Geist Mono", monospace;
-}
-
 @plugin "daisyui/theme" {
   name: "lux";
   default: true;
@@ -46,6 +39,13 @@
   --border: 1.5px;
   --depth: 0;
   --noise: 1;
+}
+
+:root {
+  max-width: 1152px;
+  margin: 0 auto;
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", monospace;
 }
 
 .ov-overlay {

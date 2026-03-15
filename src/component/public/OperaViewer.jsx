@@ -34,8 +34,10 @@ const OperaViewer = ({ opere, initialIndex, onClose }) => {
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "Escape") onClose();
+      // eslint-disable-next-line react-hooks/immutability
       if (e.key === "ArrowLeft") navigateOpera(-1);
       if (e.key === "ArrowRight") navigateOpera(1);
+      // eslint-disable-next-line react-hooks/immutability
       if (e.key === "ArrowUp") navigateFoto(-1);
       if (e.key === "ArrowDown") navigateFoto(1);
     };
@@ -195,7 +197,6 @@ const OperaViewer = ({ opere, initialIndex, onClose }) => {
           <div className="ov-info-panel">
             {/* Titolo */}
             <div>
-              <div className="ov-label">Titolo</div>
               <div className="ov-info-title">
                 {opera.nomeOpera?.it || "—"}
                 {opera.nomeOpera?.en &&
