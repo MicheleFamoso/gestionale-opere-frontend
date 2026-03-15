@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;500&display=swap");
 @plugin "daisyui" {
   themes:
     light --default,
@@ -46,4 +46,332 @@
   --border: 1.5px;
   --depth: 0;
   --noise: 1;
+}
+
+.ov-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: oklch(98% 0 0);
+  display: flex;
+  flex-direction: column;
+  animation: ov-fade-in 0.4s ease;
+}
+
+@keyframes ov-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Top bar */
+.ov-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid oklch(92% 0.004 286.32);
+  flex-shrink: 0;
+}
+
+.ov-counter {
+  font-family: "Cinzel", serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: oklch(55% 0.005 285);
+  text-transform: uppercase;
+}
+
+.ov-title-top {
+  font-family: "Cinzel", serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: oklch(85% 0.005 285);
+  text-align: center;
+}
+
+.ov-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: oklch(55% 0.005 285);
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s;
+  font-family: "Cormorant Garamond", serif;
+}
+.ov-close:hover {
+  color: oklch(90% 0.005 285);
+}
+
+/* Main area */
+.ov-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Image panel */
+.ov-image-panel {
+  flex: 1 1 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid oklch(92% 0.004 286.32);
+}
+
+.ov-image-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease;
+}
+
+.ov-image-wrap.slide-left {
+  transform: translateX(-60px);
+  opacity: 0;
+}
+.ov-image-wrap.slide-right {
+  transform: translateX(60px);
+  opacity: 0;
+}
+
+.ov-image-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 25px 40px -5px oklch(0% 0 0 / 0.35);
+}
+
+/* Foto dots */
+.ov-foto-dots {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ov-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: oklch(35% 0.005 285);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.ov-dot.active {
+  background: oklch(75% 0.183 55.934);
+  transform: scale(1.6);
+}
+
+/* Vertical foto nav arrows */
+.ov-foto-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: 1px solid oklch(92% 0.004 286.32);
+  color: oklch(60% 0.005 285);
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  z-index: 2;
+}
+.ov-foto-nav:hover {
+  border-color: oklch(75% 0.183 55.934);
+  color: oklch(75% 0.183 55.934);
+}
+.ov-foto-nav.top {
+  top: 1rem;
+}
+.ov-foto-nav.bottom {
+  bottom: 1rem;
+}
+.ov-foto-nav:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+.ov-foto-nav:disabled:hover {
+  border-color: oklch(30% 0.005 285);
+  color: oklch(60% 0.005 285);
+}
+
+/* Info panel */
+.ov-info-panel {
+  flex: 0 0 360px;
+  overflow-y: auto;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: oklch(25% 0.005 285) transparent;
+}
+
+.ov-label {
+  font-family: "Cinzel", serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  color: oklch(75% 0.183 55.934);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.ov-info-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: oklch(93% 0.004 285);
+  line-height: 1.2;
+}
+
+.ov-info-title em {
+  font-style: italic;
+  color: oklch(70% 0.005 285);
+  font-size: 1.4rem;
+}
+
+.ov-divider {
+  height: 1px;
+  background: oklch(92% 0.004 286.32);
+}
+
+.ov-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.ov-meta-item {
+}
+.ov-meta-value {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  color: oklch(80% 0.005 285);
+}
+
+.ov-categoria-tag {
+  display: inline-block;
+  border: 1px solid oklch(30% 0.005 285);
+  padding: 0.25rem 0.75rem;
+  font-family: "Cinzel", serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: oklch(55% 0.005 285);
+  border-radius: 2rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ov-foto-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: oklch(45% 0.005 285);
+}
+
+/* Opera nav arrows (left/right) */
+.ov-opera-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: oklch(10% 0.005 285 / 0.1);
+  border: 1px solid oklch(92% 0.004 286.32);
+  color: oklch(60% 0.005 285);
+  cursor: pointer;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.2s;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+.ov-opera-nav:hover {
+  border-color: oklch(75% 0.183 55.934);
+  color: oklch(75% 0.183 55.934);
+}
+.ov-opera-nav:disabled {
+  opacity: 0.15;
+  cursor: default;
+  pointer-events: none;
+}
+.ov-opera-nav.prev {
+  left: 1.25rem;
+}
+.ov-opera-nav.next {
+  right: 1.25rem;
+}
+
+/* Bottom bar */
+.ov-bottombar {
+  border-top: 1px solid oklch(92% 0.004 286.32);
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.ov-progress-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: oklch(28% 0.005 285);
+  transition: all 0.3s;
+}
+.ov-progress-dot.active {
+  background: oklch(75% 0.183 55.934);
+  width: 20px;
+  border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ov-main {
+    flex-direction: column;
+  }
+  .ov-image-panel {
+    flex: 1 1 55%;
+    border-right: none;
+    border-bottom: 1px solid oklch(18% 0.005 285);
+  }
+  .ov-info-panel {
+    flex: 1 1 45%;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  .ov-info-title {
+    font-size: 1.4rem;
+  }
+  .ov-opera-nav {
+    display: none;
+  }
 }
