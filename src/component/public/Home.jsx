@@ -10,7 +10,7 @@ const Home = () => {
 
   const handleOpere = async () => {
     try {
-      const response = await fetch("http://192.168.178.156:3000/opera");
+      const response = await fetch("http://localhost:3000/opera");
       if (!response.ok) throw new Error("Errore nel recupero delle opere");
       const data = await response.json();
       setOpere(data);
